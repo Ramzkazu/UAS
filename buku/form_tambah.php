@@ -54,24 +54,24 @@
                                     aria-describedby="emailHelp">
                             </div>
 
-                            <!-- <div class="mb-3">
+                            <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Penerbit</label>
                                 <select class="form-control" name="penerbit" id="">
                                     <option value="">-Pilih Penerbit-</option>
                                     <?php
                                         //Kode untuk looping gelombang
                                         include_once('../koneksi.php');
-                                        $qry_jur = "SELECT * FROM penerbit";
-                                        $data_gel = mysqli_query($koneksi, $qry_jur);
-                                        foreach($data_gel as $item_gel){
+                                        $qry_penerbit = "SELECT * FROM penerbit";
+                                        $data_penerbit = mysqli_query($koneksi, $qry_penerbit);
+                                        foreach($data_penerbit as $item_penerbit){
                                     ?>
-                                    <option value="<?=$item_gel['id']?>"><?=$item_gel['kode']?> - <?=$item_gel['penerbit']?></option>
+                                    <option value="<?=$item_penerbit['id']?>"> <?=$item_penerbit['nm_penerbit']?></option>
                                     <?php
                                         //penutup looping gelombang
                                         }
                                     ?>
                                 </select>
-                            </div> -->
+                            </div>
 
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Kategori</label>
@@ -89,9 +89,9 @@
                                         //penutup looping jurusan
                                         }
                                     ?>
-
                                 </select>
                             </div>
+
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Cover</label>
                                 <input name="cover" type="file" class="form-control" id="exampleInputEmail1"

@@ -31,10 +31,8 @@
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
-                                    <th scope="col">Judul Buku</th>
-                                    <th scope="col">Kategori</th>
-                                    <th scope="col">Penerbit</th>
-                                    <th scope="col">Tahun Terbit</th>
+                                    <th scope="col">Nama Penerbit</th>
+                                    <th scope="col">Alamat Penerbit</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -44,7 +42,7 @@
                                 include("../koneksi.php");
 
                                 #2. menulikan query menampilkan data
-                                $qry = "SELECT *, buku.id AS idb FROM buku INNER JOIN kategori ON buku.kategoris_id = kategori.id INNER JOIN penerbit ON buku.penerbits_id = penerbit.id";
+                                $qry = "SELECT * FROM penerbit";
 
                                 #3. menjalankan query
                                 $tampil = mysqli_query($koneksi,$qry);
@@ -56,14 +54,12 @@
                                 ?>
                                 <tr>
                                     <th scope="row"><?=$nomor++?></th>
-                                    <td><?=$data['judul_buku']?></td>
-                                    <td><?=$data['nm_kategori']?></td>
                                     <td><?=$data['nm_penerbit']?></td>
-                                    <td><?=$data['tahun_terbit']?></td>
+                                    <td><?=$data['alamat_penerbit']?></td>
                                     <td>
-                                        <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal<?=$data['idb']?>"><i class="fa-solid fa-magnifying-glass"></i></button>
-                                        <a href="formedit.php?id=<?=$data['idb']?>" class="btn btn-info btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
-                                        <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modalhapus<?=$data['idb']?>"><i class="fa-solid fa-trash"></i></button>
+                                        <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal<?=$data['id']?>"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                        <a href="formedit.php?id=<?=$data['id']?>" class="btn btn-info btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
+                                        <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modalhapus<?=$data['id']?>"><i class="fa-solid fa-trash"></i></button>
 
                                         <!-- Modal Detail-->
                                         <div class="modal fade" id="exampleModal<?=$data['id']?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -77,42 +73,13 @@
                                                 <table class="table">
                                                 <tbody>
                                                     <tr>
-                                                        <td colspan="2"><img src="../cover/<?=$data['cover']?>" height="150" alt=""><td></td>Cover</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Judul Buku</td>
-                                                        <th scope="row"><?=$data['judul_buku']?></th>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>penerbit</td>
+                                                        <td>Nama Penerbit</td>
                                                         <th scope="row"><?=$data['nm_penerbit']?></th>
                                                     </tr>
                                                     <tr>
-                                                        <td>Kategori</td>
-                                                        <th scope="row"><?=$data['nm_kat']?></th>
+                                                        <td>Alamat Penerbit</td>
+                                                        <th scope="row"><?=$data['alamat_penerbit']?></th>
                                                     </tr>
-                                                    <tr>
-                                                        <td>Pengarang</td>
-                                                        <th scope="row"><?=$data['pengarang']?></th>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Tahun Terbit</td>
-                                                        <th scope="row"><?=$data['tahun_terbit']?></th>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>isbn</td>
-                                                        <th scope="row"><?=$data['isbn']?></th>
-                                                    </tr>
-                                                    <tr>
-                                                    <tr>
-                                                        <td>jumlah Halaman</td>
-                                                        <th scope="row"><?=$data['jumlah_halaman']?></th>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Stok</td>
-                                                        <th scope="row"><?=$data['stok']?></th>
-                                                    </tr>
-                                                    <tr>
                                                 </tbody>
                                                 </table>
                                             </div>
@@ -133,7 +100,7 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                Yakin Data Dengan Jduul Buku <?=$data['judul_buku']?> Ingin Dihapus?
+                                                Yakin Data Dengan Penerbit <?=$data['nm_penerbit']?> Ingin Dihapus?
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
