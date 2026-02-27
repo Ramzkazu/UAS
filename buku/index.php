@@ -44,7 +44,7 @@
                                 include("../koneksi.php");
 
                                 #2. menulikan query menampilkan data
-                                $qry = "SELECT *, buku.id AS idb FROM buku INNER JOIN kategori ON buku.kategoris_id = kategori.id";
+                                $qry = "SELECT *, buku.id AS idb FROM buku INNER JOIN kategori ON buku.kategoris_id = kategori.id INNER JOIN penerbit ON buku.penerbits_id = penerbis.id";
 
                                 #3. menjalankan query
                                 $tampil = mysqli_query($koneksi,$qry);
@@ -83,10 +83,10 @@
                                                         <td>Judul Buku</td>
                                                         <th scope="row"><?=$data['judul_buku']?></th>
                                                     </tr>
-                                                    <!-- <tr>
+                                                    <tr>
                                                         <td>penerbit</td>
                                                         <th scope="row"><?=$data['nm_penerbit']?></th>
-                                                    </tr> -->
+                                                    </tr>
                                                     <tr>
                                                         <td>Kategori</td>
                                                         <th scope="row"><?=$data['nm_kat']?></th>
