@@ -2,7 +2,7 @@
     $host ="localhost";
     $username = "root";
     $password = "";
-    $db = "perpustakaan";
+    $db = "db_perpus_nim";
 
     $koneksi = mysqli_connect($host, $username, $password, $db);
 ?>
